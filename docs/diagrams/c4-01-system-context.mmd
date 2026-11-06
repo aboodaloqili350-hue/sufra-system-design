@@ -8,7 +8,7 @@ C4Context
 
   System(sufra, "Sufra", "Marketplace for home-cooked food in Jordan: Customer app, Cook app, admin dashboard, and shared backend")
 
-  System_Ext(maps, "Google Maps Platform", "Addresses, distances, and arrival times")
+  System_Ext(maps, "OpenStreetMap", "Addresses, distances, and arrival times")
   System_Ext(sms, "SMS Provider", "Delivers login codes and important alerts")
   System_Ext(push, "Push Notification Service", "Delivers push notifications to the apps")
   System_Ext(cliq, "CliQ", "Jordan's instant payment network")
@@ -21,7 +21,8 @@ C4Context
   Rel(sufra, maps, "Gets addresses", "HTTPS")
   Rel(sufra, sms, "Sends codes", "HTTPS")
   Rel(sufra, push, "Sends alerts", "HTTPS")
-  Rel(sufra, cliq, "Payment details", "Manual")
+  Rel(sufra, cliq, "Reconciles payments", "Manual")
+   
 
   UpdateRelStyle(sufra, maps, $offsetX="-20", $offsetY="-20")
   UpdateRelStyle(sufra, delivery, $offsetY="-15")

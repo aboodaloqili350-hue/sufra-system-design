@@ -157,7 +157,7 @@ Architecture-level criterion: a developer who joins the project can understand i
 | TC-2 | Android first (mid-range devices), iPhone in parallel | PRD Section 5 |
 | TC-3 | Must work on weak and variable connections | PRD Sections 5 and 20 |
 | LC-4 | Where data is hosted may need to follow legal requirements (Jordan or an approved region) | Pending legal advice |
-| TC-5 | Google Maps is the main map provider | PRD Section 5 |
+| TC-5 | OpenStreetMap is the main map provider | PRD Section 5 |
 | TC-6 | Login by SMS code to +962 phone numbers | PRD Section 5 |
 | TC-7 | Each app stays small (target under 40 MB) | PRD Section 20 |
 | TC-8 | Money is in Jordanian Dinar with 3 decimals | PRD Section 5 |
@@ -244,7 +244,7 @@ The diagram shows Sufra in the center, the people who use it, and the external s
 
 | External system | Purpose | Interaction | Notes |
 |---|---|---|---|
-| Google Maps Platform | Addresses, distances, and arrival times | HTTPS | Usage limits and caching are needed to control cost |
+| OpenStreetMap | Addresses, map tiles, and distance calculations | HTTPS | Free open-source map service to minimize operational costs |
 | SMS Provider | Login codes and important alerts | HTTPS | Must support +962 phone numbers |
 | Push Notification Service | Notifications to the apps, including new-order alerts for cooks | HTTPS | Works on Android and iPhone |
 | CliQ | Instant bank payments | Manual | CliQ |
