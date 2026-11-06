@@ -27,8 +27,8 @@ Sufra is a marketplace for home-cooked food in Jordan. It connects home cooks (m
 **Customer app**
 
 - FR-C1: Log in with a phone number and an SMS code. Guests can browse, and login is required at checkout.
-- FR-C2: Manage addresses (map pin, landmark note, building, floor, apartment, label such as Home or Work).
-- FR-C3: Browse home sections and search Arabic text by dish, cook, or ingredient.
+- FR-C2: Manage addresses (map pin, landmark note, building, floor, apartment, delivery notes, label such as Home or Work) and save dietary preferences and allergens.
+- FR-C3: Browse home sections, view a map of nearby kitchens (approximate locations only), and search Arabic text by dish, cook, or ingredient.
 - FR-C4: Filter and sort results (price, rating, distance, diet, allergens, order type).
 - FR-C5: View cook pages and meal pages (photos, allergens, price, notice time, reviews).
 - FR-C6: Build a cart with items from one cook only, and see an itemized price in JOD.
@@ -36,16 +36,22 @@ Sufra is a marketplace for home-cooked food in Jordan. It connects home cooks (m
 - FR-C8: Pay by cash on delivery or CliQ, use promo codes, and add an optional tip.
 - FR-C9: Track order status, see the handoff code, and cancel according to the cancellation policy.
 - FR-C10: Review a delivered order (verified buyers only, one review per order) and report a problem with a photo.
+- FR-C11: View order history, save favorite cooks and meals, re-order, and get invoices.
+- FR-C12: Chat with the cook or support in the app, or call them, with phone numbers hidden.
+- FR-C13: Delete the account and export personal data.
+- FR-C14: Manage notification settings and marketing consent.
 
 **Cook app**
 
-- FR-K1: Register with a phone number and SMS code, upload an ID, and accept the hygiene pledge. The cook goes live only after admin approval.
-- FR-K2: Create and edit meals. Photos are taken only with the in-app camera (gallery upload is blocked).
+- FR-K1: Register with a phone number and SMS code, upload an ID, accept the hygiene pledge, and complete a short kitchen video check. The cook goes live only after admin approval of the ID, the kitchen check, and the first menu.
+- FR-K2: Create and edit meals (description, ingredients, allergens, portion, price, prep time, notice time). Photos are taken only with the in-app camera (gallery upload is blocked).
 - FR-K3: Set daily portions, capacity, working hours, and online/offline status.
 - FR-K4: Receive new-order notifications (no acceptance step), confirm prep time, mark orders Preparing and Ready, and verify the handoff code.
 - FR-K5: Update remaining quantity, and cancel an accepted order in an emergency with a reason.
 - FR-K6: View itemized earnings and commission.
 - FR-K7: Reply once to each review and report abusive reviews.
+- FR-K8: Use vacation mode. The cook is set to unavailable automatically after a period of inactivity while marked available.
+- FR-K9: Take a live photo of a ready dish with the order number when asked for a random photo check.
 
 **Admin dashboard**
 
@@ -55,6 +61,8 @@ Sufra is a marketplace for home-cooked food in Jordan. It connects home cooks (m
 - FR-A4: Use support tools: order timeline and refunds.
 - FR-A5: Manage finance: payouts, daily cash report, and commission settings.
 - FR-A6: Manage settings (fees, cutoff times, categories, allergens), roles, and activity logs.
+- FR-A7: Handle photo violations: pause meals, record strikes, and decide appeals within 48 hours.
+- FR-A8: View a simple dashboard of success metrics and the order funnel.
 
 **System-wide**
 
@@ -62,6 +70,10 @@ Sufra is a marketplace for home-cooked food in Jordan. It connects home cooks (m
 - FR-S2: Accept orders automatically within the quantity set by the cook, without overselling.
 - FR-S3: Send push notifications and SMS in Arabic.
 - FR-S4: Rank cooks. The average rating is shown after 5 reviews, and new cooks get a "New cook" boost.
+- FR-S5: Flag suspicious reviews automatically (offensive words, personal information, links to the cook) and alert admins to sudden review spikes.
+- FR-S6: Limit the cash order value for new customers until they complete a few successful orders.
+- FR-S7: Respect notification settings, marketing quiet hours, and prayer times for non-urgent notifications.
+- FR-S8: Award the "Verified kitchen" badge after the ID, kitchen, and hygiene checks.
 
 ### 1.4 Main Use Cases
 
@@ -86,14 +98,14 @@ Sufra is a marketplace for home-cooked food in Jordan. It connects home cooks (m
 | NFR-7 | Privacy | Cook home address never shown to customers; compliance with Jordan's Personal Data Protection Law (2023) | MVP |
 | NFR-8 | Localization | Arabic only with full right-to-left layout | MVP |
 | NFR-9 | App size | Under 40 MB per app | MVP |
-| NFR-10 | Cook app on weak networks | Saves changes and syncs when back online | To be confirmed |
+| NFR-10 | Cook app on weak networks | Saves changes and syncs when back online (stated in PRD Section 20; depth of offline support to be confirmed) | MVP |
 | NFR-11 | Monitoring and backups | Structured logs, alerts, daily database backups | MVP |
 
 ### 1.6 Core Features and Priorities
 
 - **Must have:** login, browsing and search, cart and checkout, Order Now, Pre-order, cash and CliQ payments, order lifecycle, cook onboarding and approval, in-app camera, notifications, basic reviews, simple admin dashboard.
-- **Should have:** promo codes, tips, ranking with the "New cook" boost, customer problem reports with photos.
-- **Could have:** WhatsApp notifications, search that tolerates spelling mistakes, offline sync in the Cook app.
+- **Should have:** promo codes, tips, ranking with the "New cook" boost, customer problem reports with photos, basic offline tolerance in the Cook app (save changes locally, sync when back online).
+- **Could have:** WhatsApp notifications, search that tolerates spelling mistakes.
 - **Will not have in this version:** subscriptions, card payments, referral program, loyalty points, smart ranking, Driver app, English interface.
 
 ### 1.7 Boundaries, MVP Scope, and Out of Scope
@@ -144,10 +156,10 @@ Architecture-level criterion: a developer who joins the project can understand i
 | TC-1 | Arabic only, with full right-to-left layout | PRD Section 5 |
 | TC-2 | Android first (mid-range devices), iPhone in parallel | PRD Section 5 |
 | TC-3 | Must work on weak and variable connections | PRD Sections 5 and 20 |
-| TC-4 | Meal photos are taken live with the in-app camera only | PRD Section 14 |
+| LC-4 | Where data is hosted may need to follow legal requirements (Jordan or an approved region) | Pending legal advice |
 | TC-5 | Google Maps is the main map provider | PRD Section 5 |
 | TC-6 | Login by SMS code to +962 phone numbers | PRD Section 5 |
-| TC-7 | Each app stays under 40 MB | PRD Section 20 |
+| TC-7 | Each app stays small (target under 40 MB) | PRD Section 20 |
 | TC-8 | Money is in Jordanian Dinar with 3 decimals | PRD Section 5 |
 
 ### 2.2 Organizational Constraints
@@ -163,7 +175,7 @@ Architecture-level criterion: a developer who joins the project can understand i
 
 | ID | Constraint | Impact |
 |---|---|---|
-| FC-1 | Running costs stay under JOD 1,000 per month (JOD 250 to 600 estimated during the beta) | Managed services and usage limits |
+| FC-1 | Running costs stay under JOD 1,000 per month until order volume justifies more (JOD 250 to 600 estimated during the beta, plus JOD 200 to 500 for marketing) | Managed services and usage limits |
 | FC-2 | Free tiers early, and no paid ads before retention is proven | Hosting and tool choices |
 | FC-3 | Apple developer account USD 99 per year, Google Play fee USD 25 once | Release costs |
 
@@ -235,7 +247,7 @@ The diagram shows Sufra in the center, the people who use it, and the external s
 | Google Maps Platform | Addresses, distances, and arrival times | HTTPS | Usage limits and caching are needed to control cost |
 | SMS Provider | Login codes and important alerts | HTTPS | Must support +962 phone numbers |
 | Push Notification Service | Notifications to the apps, including new-order alerts for cooks | HTTPS | Works on Android and iPhone |
-| CliQ | Instant bank payments | Manual | Reconciled manually at launch (assumption A-5); no direct integration in the MVP |
+| CliQ | Instant bank payments | Manual | CliQ |
 
 ### 3.6 Scope Notes
 
