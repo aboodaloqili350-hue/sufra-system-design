@@ -201,8 +201,48 @@ The PRD only suggests the following items. They are not constraints. The team de
 
 ## 3. System Context and Scope
 
-_To be written._
+### 3.1 Purpose
 
+This section shows how Sufra interacts with the people who use it and with external systems. Sufra is shown as a single system. Its internal structure is described in Section 5.
+
+### 3.2 System Context Diagram (C4 Level 1)
+
+![System Context Diagram for Sufra](diagrams/c4-01-system-context.png)
+
+_Figure 3.1: System Context Diagram for Sufra. Editable source: `diagrams/c4-01-system-context.mmd`._
+
+The diagram shows Sufra in the center, the people who use it, and the external systems it depends on. Each arrow points from the party that starts an interaction to the party that receives it.
+
+### 3.3 System Boundary
+
+**Inside the boundary** (built and operated by the team): the Customer app, the Cook app, the admin dashboard, and the shared backend.
+
+**Outside the boundary:** the people listed in 3.4 and the external systems listed in 3.5.
+
+### 3.4 User Roles
+
+| Role | Description | Main interactions with Sufra |
+|---|---|---|
+| Customer | Orders home-cooked meals now or in advance | Browses cooks and meals, places Order Now and Pre-orders, pays by cash or CliQ, tracks orders, reviews meals, reports problems |
+| Cook | Home cook who prepares and sells meals | Registers and gets verified, creates meals with in-app camera photos, sets portions and availability, prepares orders, views earnings |
+| Admin Staff | Support, quality, onboarding, and finance staff | Approves cooks and menus, moderates reviews and photos, supports users, updates delivery status manually, manages payouts and settings |
+| Delivery Person (external) | Role and method not yet decided (assumption A-1) | Receives pickup and drop-off details and confirms handoff with a code |
+
+### 3.5 External Dependencies
+
+| External system | Purpose | Interaction | Notes |
+|---|---|---|---|
+| Google Maps Platform | Addresses, distances, and arrival times | HTTPS | Usage limits and caching are needed to control cost |
+| SMS Provider | Login codes and important alerts | HTTPS | Must support +962 phone numbers |
+| Push Notification Service | Notifications to the apps, including new-order alerts for cooks | HTTPS | Works on Android and iPhone |
+| CliQ | Instant bank payments | Manual | Reconciled manually at launch (assumption A-5); no direct integration in the MVP |
+
+### 3.6 Scope Notes
+
+- **Authorities** (municipality, Ministry of Health, JFDA) are stakeholders (Section 1.2) but do not interact with the system directly, so they are not in the diagram.
+- **WhatsApp Business messages** are a "Could have" feature (Section 1.6) and are not shown.
+- **Card payments** are planned for Phase 2. When added, a payment gateway will appear as a new external system.
+- **Delivery** is shown as an external person because the method is still undecided. The diagram will change once the decision is made.
 ## 4. Solution Strategy
 
 _To be written._

@@ -1,0 +1,29 @@
+C4Context
+  title System Context Diagram for Sufra
+
+  Person(customer, "Customer", "Orders home-cooked meals now or in advance")
+  Person(cook, "Cook", "Home cook who prepares and sells meals")
+  Person(admin, "Admin Staff", "Approves cooks, moderates content, handles support and finance")
+  Person_Ext(delivery, "Delivery Person", "Role and method not yet decided")
+
+  System(sufra, "Sufra", "Marketplace for home-cooked food in Jordan: Customer app, Cook app, admin dashboard, and shared backend")
+
+  System_Ext(maps, "Google Maps Platform", "Addresses, distances, and arrival times")
+  System_Ext(sms, "SMS Provider", "Delivers login codes and important alerts")
+  System_Ext(push, "Push Notification Service", "Delivers push notifications to the apps")
+  System_Ext(cliq, "CliQ", "Jordan's instant payment network")
+
+  Rel(customer, sufra, "Orders and pays")
+  Rel(cook, sufra, "Manages meals")
+  Rel(admin, sufra, "Approves and supports")
+  Rel(sufra, delivery, "Shares pickup details")
+
+  Rel(sufra, maps, "Gets addresses", "HTTPS")
+  Rel(sufra, sms, "Sends codes", "HTTPS")
+  Rel(sufra, push, "Sends alerts", "HTTPS")
+  Rel(sufra, cliq, "Payment details", "Manual")
+
+  UpdateRelStyle(sufra, maps, $offsetX="-20", $offsetY="-20")
+  UpdateRelStyle(sufra, delivery, $offsetY="-15")
+
+  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
